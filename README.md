@@ -19,3 +19,4 @@ The app contains a single map view. Initially, a request is made to the OpenCanv
 [0]: http://www.opencanvas.co/
 [1]: https://github.com/johnezang/JSONKit
 [2]: https://github.com/MugunthKumar/MKNetworkKit
+[3]: http://cocoapods.org
