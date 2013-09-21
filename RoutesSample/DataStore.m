@@ -14,6 +14,7 @@
 NSString *const kHostName = @"api.opencanvas.co";
 NSString *const kVersion = @"v1.0";
 NSString *const kAppHeaderKey = @"X-Mobzili-App-Key";
+NSString *const kAppHeaderKeyValue = @"YmU2NmY0ZmMtMDBkMy00ZTkzLWJiMWQtYTkzOWJkZGRjNWM4";
 
 @interface DataStore ()
 
@@ -37,7 +38,7 @@ NSString *const kAppHeaderKey = @"X-Mobzili-App-Key";
 - (void)getRoutesWithCompletionHandler:(void (^)(NSArray *routes))completionHandler {
     //NSLog(@"REQUEST(Routes): %@", [NSString stringWithFormat:@"%@/%@/routes", kHostName, kVersion]);
     MKNetworkOperation *operation = [self.routesEngine operationWithPath:[NSString stringWithFormat:@"%@/routes", kVersion]];
-    [operation addHeaders:[NSDictionary dictionaryWithObject:@"YmU2NmY0ZmMtMDBkMy00ZTkzLWJiMWQtYTkzOWJkZGRjNWM4" forKey:kAppHeaderKey]];
+    [operation addHeaders:[NSDictionary dictionaryWithObject:kAppHeaderKeyValue forKey:kAppHeaderKey]];
     [operation onCompletion:^(MKNetworkOperation *completedOperation) {
         if (![completedOperation isCachedResponse]) {
             NSDictionary *response = [completedOperation.responseData objectFromJSONData];
@@ -63,7 +64,7 @@ NSString *const kAppHeaderKey = @"X-Mobzili-App-Key";
 - (void)getPlacesForRoute:(Route *)route completionHandler:(void (^)(NSArray *places))completionHandler {
    // NSLog(@"REQUEST(Places): %@", [NSString stringWithFormat:@"%@/%@/routes/%d/places", kHostName, kVersion, route.routeID]);
     MKNetworkOperation *operation = [self.routesEngine operationWithPath:[NSString stringWithFormat:@"%@/routes/%d/places", kVersion, route.routeID]];
-    [operation addHeaders:[NSDictionary dictionaryWithObject:@"YmU2NmY0ZmMtMDBkMy00ZTkzLWJiMWQtYTkzOWJkZGRjNWM4" forKey:kAppHeaderKey]];
+    [operation addHeaders:[NSDictionary dictionaryWithObject:kAppHeaderKeyValue forKey:kAppHeaderKey]];
     [operation onCompletion:^(MKNetworkOperation *completedOperation) {
         if (![completedOperation isCachedResponse]) {
             NSDictionary *response = [completedOperation.responseData objectFromJSONData];
